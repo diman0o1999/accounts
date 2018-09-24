@@ -1,0 +1,59 @@
+
+<div data-controller="Favorites">
+  <% @my_favorites_articles.each do |article|%>
+
+
+
+    <article>
+      <div class="row article" data-article-id="<%=article.id %>">
+        <div class="col-sm-6 col-md-4">
+          <figure>
+            <%= image_tag article.image.url(:thumb), class: 'image-show' if  article.image? %>
+          </figure>
+        </div>
+        <div class="col-sm-6 col-md-8">
+          <div class="dropup pull-right btn-xs ">
+            <button class="btn btn-default btn-xs  btn-group-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu " aria-labelledby="dropdownMenu2">
+              <li> <%= link_to 'Rate', new_article_rating_path(article)%></li>
+
+              <% if policy(article).edit? %>
+                <li ><%= link_to 'Edit', edit_article_path(article) %></li>
+              <% end %>
+
+              <li><%= link_to 'Show', article_path(article)%></li>
+
+              <% if policy(article).destroy? %>
+                <li><%= link_to 'Destroy', 'javascript:void(0)'%></li>
+              <% end %>
+            </ul>
+          </div>
+
+          <h4><%= article.title %></h4>
+          <p><%= article.text[0...150] %></p>
+          <section>
+
+            <i class="glyphicon glyphicon-user"></i>&nbsp;<%= article.user.first_name  %>&nbsp;
+            <i class="glyphicon glyphicon-calendar"></i>&nbsp;<%=  l article.created_at , format: :short%>&nbsp;
+            <i class="glyphicon glyphicon-comment"></i>&nbsp; <%=article.comments_count%>&nbsp;
+            <a href="javascript:void(0);"
+               class="btn btn-default btn-sm fvr-btn favorites <%= article.has_favorite?(current_user) ? '' : 'hidden' %>">
+              <i class="glyphicon glyphicon-star"></i>
+            </a>
+            <a href="javascript:void(0);"
+               class="btn btn-default btn-sm fvr-btn not-favorites <%= article.has_favorite?(current_user) ? 'hidden' : '' %>">
+              <i class="glyphicon glyphicon-star-empty"></i>
+            </a>
+            <%= link_to 'More ...', article_path(article), class: 'btn btn-default btn-sm pull-right' %>
+
+          </section>
+        </div>
+      </div>
+      <hr>
+    </article>
+
+
+  <% end %>
+  <%= paginate @my_favorites_articles %>
+</div>

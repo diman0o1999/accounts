@@ -1,0 +1,59 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "select2";
+@import "bootstrap-dialog/src/css/bootstrap-dialog";
+
+
+.validation-error {
+  border: 1px solid red !important;
+}
+.validation-success {
+  border: 1px solid green !important;
+}
+
+.validation-text {
+  color: red;
+}
+
+.text-error{
+  color: red;
+}
+
+.text-success{
+  color: green;
+}
+.thumb-contenido{
+
+  margin-bottom:1%;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.thumbnail {
+  padding:0px;
+}
+.panel {
+  position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+  position:absolute;
+  top:11px;left:-16px;
+  right:100%;
+  width:0;
+  height:0;
+  display:block;
+  content:" ";
+  border-color:transparent;
+  border-style:solid solid outset;
+  pointer-events:none;
+}
+.panel>.panel-heading:after{
+  border-width:7px;
+  border-right-color:#f7f7f7;
+  margin-top:1px;
+  margin-left:2px;
+}
+.panel>.panel-heading:before{
+  border-right-color:#ddd;
+  border-width:8px;
+}

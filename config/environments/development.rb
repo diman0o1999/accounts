@@ -40,7 +40,7 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-  # Raise an error on page load if there are pending migrations.
+  # Raise an error on article load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
   # Highlight code that triggered database queries in logs.
@@ -54,10 +54,20 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.assets.js_compressor = Uglifier.new(harmony: true)
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.after_initialize do
+    require 'awesome_print'
+    AwesomePrint.irb!
+  end
+
 end

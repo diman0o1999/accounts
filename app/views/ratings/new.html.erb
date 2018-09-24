@@ -1,0 +1,4 @@
+<h1>new rating</h1>
+<%= render partial: 'form', locals: {article: @article, rating: @rating, url: article_ratings_path(@article), method_type: 'post' } %>
+
+<%= link_to 'Back', articles_path %>

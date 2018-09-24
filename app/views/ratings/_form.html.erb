@@ -1,0 +1,4 @@
+<%= simple_form_for([article, rating], url: url, method: method_type, defaults: {input_html: {class: 'default_class' } }) do |f| %>
+  <%= f.input :mark %>
+  <%= f.submit action_name, class: "btn btn-primary" %>
+<% end %>

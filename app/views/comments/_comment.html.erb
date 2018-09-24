@@ -1,0 +1,42 @@
+<div class=" row comment" id="comment-<%= comment.id %>">
+
+
+
+  <div class="col-sm-2">
+    <div class="thumbnail">
+
+      <%= image_tag comment.user.image.url(:large), class: 'img-responsive user-photo'  %>
+      <%# if comment.user.image %>
+            <%#= image_tag comment.user.image.url(:large), class: 'img-responsive user-photo' %>
+      <%# else%>
+          <%#=  image_tag 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg', class: 'img-responsive user-photo'%>
+      <%# end %>
+    </div><!-- /thumbnail -->
+  </div><!-- /col-sm-1 -->
+
+  <div class="col-sm-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+
+        <strong><%= comment.user.first_name+' '+comment.user.last_name %></strong> <span class="text-muted"><%= comment.created_at %></span>
+         
+        <span class="label label-danger pull-right">
+          <%= link_to '', [comment.article, comment],
+                      class: 'glyphicon glyphicon-remove',
+                      method: :delete,
+                      data: { confirm: 'Are you sure?',
+                              remote: true}  %>
+        </span>
+
+      </div>
+      <div class="panel-body">
+        <%= comment.body %>
+      </div><!-- /panel-body -->
+    </div><!-- /panel panel-default -->
+  </div>
+   
+
+</div>
+
+
+<!-- /col-sm-5 -->

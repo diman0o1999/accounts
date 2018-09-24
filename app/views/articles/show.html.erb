@@ -1,0 +1,40 @@
+
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-12">
+      <span class="label label-warning pull-right">
+           <%= link_to 'Edit', edit_article_path(@article) %>
+        </span>
+      <span class="label label-success pull-right">
+          <%= link_to 'Back', articles_path %>
+        </span>
+      <div class="row hidden-md hidden-lg"><h1 class="text-center" ><%= @article.title %></h1>
+
+      </div>
+
+
+      <div class="pull-left col-md-4 col-xs-12 thumb-contenido">
+        <%= image_tag @article.image.url(:large), class: 'center-block img-responsive' if @article.image? %>
+      </div>
+      <div class="">
+        <h1  class="hidden-xs hidden-sm"><%= @article.title %></h1>
+        <hr>
+        <small>10 - 04 -2017</small><br>
+        <small><strong><%= @article.user.first_name+' '+@article.user.last_name %></strong></small>
+        <hr>
+        <p class="text-justify"><%= @article.text %> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h2>Add a comment:</h2>
+<h2>Comments</h2>
+<div id="article-comments">
+  <%= render @article.comments %>
+</div>
+
+
+<%= render 'comments/form' %>

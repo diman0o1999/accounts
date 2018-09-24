@@ -1,0 +1,30 @@
+
+<%= simple_form_for(article, method: method_name,html: { multipart: true }, url: url, defaults: {input_html: {class: 'default_class' } }) do |f| %>
+  <%= f.input :title %>
+  <p class="title-error hidden validation-text">Min length 5 symbols</p>
+  <%= f.input :text %>
+  <%= f.file_field :image %>
+  <%#= f.input :category, collection: Category.all, include_blank: false %>
+  <%#= f.association :category, label: false, include_blank: false, as: :select, collection: Category.all.map{ |l| [l.name, l.id] } %>
+  <%#= f.select :category_id, Category.all.map { |r| [r.name, r.id] }, include_blank: false, class: 'selectpicker', input_html: { class: 'selectpicker', multiple: true}  %>
+<!--  <select class="js-example-basic-multiple" id="article_category_id" name="category_id[]" >-->
+    <%# Category.all.each do |category| %>
+<!--      <option value="<%#= category.id %>"><%#= category.name %></option>-->
+    <%# end %>
+<!--  </select>-->
+  <%#= f.select :text, options_for_select(["Asst", "dir", "pres"]), {}, {:multiple => true, :class => "chzn-select", :style => "width:450px;" } %>
+
+
+  <h3>Categories</h3>
+  <div id="tasks">
+    <%= f.simple_fields_for :articles_categories do |ac| %>
+      <%= render 'articles_category_fields', f: ac %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add category', f, :articles_categories, class: 'btn btn-default' %>
+    </div>
+  </div>
+
+
+  <%= f.submit action_name, class: "btn btn-primary" %>
+<% end %>

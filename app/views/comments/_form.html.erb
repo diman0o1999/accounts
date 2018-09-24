@@ -1,0 +1,9 @@
+<%= form_with(model: [@article, @article.comments.build ], data: {remote: true}, local: true, id: 'comment-new') do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, class: 'form-control' %>
+  </p>
+  <p>
+    <%= form.submit class:'btn btn-primary' %>
+  </p>
+<% end %>

@@ -1,0 +1,6 @@
+<div data-controller="Articles">
+  <h1>new page</h1>
+  <%= render partial: 'form', locals: {article: @article, method_name: :post, url: articles_path} %>
+
+  <%= link_to 'Back', articles_path %>
+</div>
